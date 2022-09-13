@@ -1,3 +1,6 @@
+use std::env;
+extern crate cc;
+
 fn main() {
     let src_dir = std::path::Path::new("src");
 
@@ -29,6 +32,11 @@ fn main() {
     let mut cpp_config = cc::Build::new();
     cpp_config.cpp(true);
     cpp_config.include(&src_dir);
+
+    if env::var("TARGET").unwrap() == "wasm32-wasi" {
+        cpp_config.flag_if_supported("-fno-exceptions");
+    }
+
     cpp_config
         .flag_if_supported("-Wno-unused-parameter")
         .flag_if_supported("-Wno-unused-but-set-variable");

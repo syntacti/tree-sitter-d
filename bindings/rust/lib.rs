@@ -28,6 +28,10 @@ pub fn language() -> Language {
     unsafe { tree_sitter_d() }
 }
 
+
+/// The source of the Ruby tree-sitter grammar description.
+pub const GRAMMAR: &'static str = include_str!("../../grammar.js");
+
 /// The content of the [`node-types.json`][] file for this grammar.
 ///
 /// [`node-types.json`]: https://tree-sitter.github.io/tree-sitter/using-parsers#static-node-types
