@@ -1,4 +1,13 @@
-target
-# npm install
-/node_modules/
-
+Cargo.lock
+node_modules
+build
+*.log
+package-lock.json
+test.d
+/target/
+*.a
+*.dylib
+*.so
+*.o
+bindings/c/*.h
+.build/
